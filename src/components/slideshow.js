@@ -1,89 +1,102 @@
 import React, {Component} from "react";
+import _ from "lodash";
 
 class Slideshow extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentSlide: 0
+    };
+    this.plusSlides = this.plusSlides.bind(this);
+    this.minusSlides = this.minusSlides.bind(this);
+    this.determineSlideDisplay = this.determineSlideDisplay.bind(this);
+    this.determineDotDisplay = this.determineDotDisplay.bind(this);
+  };
 
-  plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-  
-  currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-  
-  showSlides(n) {
-    var i;
+  plusSlides() {
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
+    var numberOfSlides = slides.length - 1;
+    if (this.state.currentSlide + 1 > numberOfSlides) {
+      this.setState({
+        currentSlide: 0
+      });    
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+    else {
+      this.setState((state, props) => ({
+        currentSlide: state.currentSlide + 1
+      }));
     }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
+  }
+
+  minusSlides() {
+    var slides = document.getElementsByClassName("mySlides");
+    var numberOfSlides = slides.length - 1;
+    if (this.state.currentSlide - 1 < 0) {
+      this.setState({
+        currentSlide: numberOfSlides
+      });    
+    }
+    else {
+      this.setState((state, props) => ({
+        currentSlide: state.currentSlide - 1
+      }));
+    }  
+  }
+
+  determineSlideDisplay(n) {
+    if (n === this.state.currentSlide) {
+      return {display:"block"};
+    }
+    else { 
+      return {display: "none"}; 
+    }
+  }
+
+  determineDotDisplay(n) {
+    if (n === this.state.currentSlide) {
+      return ".active";
+    }
+    else { return ""; }
   }
 
   render() {
     return (
-      <div>
         <div class="slideshow-container">
-          <div class="mySlides">
-            <div class="numbertext">1 / 6</div>
-            <img
-              src="img/automatedLights/closetAutoLightsFull.jpg"
-              style="width:100%"
-            />
+          <div class="mySlides" style={this.determineSlideDisplay(0)}>
+            <img src={require("../images/automatedLights/closetAutoLightsFull.jpg")} width="500px" alt=""/>
             <div class="text">First winter setup</div>
           </div>
-          <div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img
-              src="img/automatedLights/closetAutoLightsCloseup.jpg"
-              style="width:100%"
-            />
+          <div class="mySlides" style={this.determineSlideDisplay(1)}>
+            <img src={require("../images/automatedLights/closetAutoLightsCloseup.jpg")} width="500px" alt=""/>
             <div class="text">Close up</div>
           </div>
-          <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img
-              src="img/automatedLights/bathtubAutoLightsFull.jpg"
-              style="width:100%"
-            />
+          <div class="mySlides" style={this.determineSlideDisplay(2)}>
+            <img src={require("../images/automatedLights/bathtubAutoLightsFull.jpg")} width="500px" alt=""/>
             <div class="text">2nd year setup</div>
           </div>
-          <div class="mySlides">
-            <div class="numbertext">4 / 6</div>
-            <img src="img/automatedLights/bloomingCactus.jpg" style="width:100%" />
+          <div class="mySlides" style={this.determineSlideDisplay(3)}>
+            <img src={require("../images/automatedLights/bloomingCactus.jpg")} width="500px" alt=""/>
             <div class="text">First time blooming in 4 year!</div>
           </div>
-          <div class="mySlides">
-            <div class="numbertext">5 / 6</div>
-            <img src="img/automatedLights/seedlingStation.jpg" style="width:100%" />
+          <div class="mySlides" style={this.determineSlideDisplay(4)}>
+            <img src={require("../images/automatedLights/seedlingStation.jpg")} width="500px" alt=""/>
             <div class="text">Seedling station</div>
           </div>
-          <div class="mySlides">
-            <div class="numbertext">6 / 6</div>
-            <img src="img/automatedLights/raspberryPi.jpg" style="width:100%" />
+          <div class="mySlides" style={this.determineSlideDisplay(5)}>
+            <img src={require("../images/automatedLights/raspberryPi.jpg")} width="500px" alt=""/>
             <div class="text">Pi setup</div>
           </div>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <a class="prev" onClick={this.minusSlides}>&#10094;</a>
+          <a class="next" onClick={this.plusSlides}>&#10095;</a>
           <br />
-        </div>
 
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-            <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(6)"></span>
+        <div class="dot-container">
+            <span class={`dot ${this.determineDotDisplay(0)}`} onClick={() => this.setState({currentSlide : 0})}></span>
+            <span class={`dot ${this.determineDotDisplay(1)}`} onClick={() => this.setState({currentSlide : 1})}></span>
+            <span class={`dot ${this.determineDotDisplay(2)}`} onClick={() => this.setState({currentSlide : 2})}></span>
+            <span class={`dot ${this.determineDotDisplay(3)}`} onClick={() => this.setState({currentSlide : 3})}></span>
+            <span class={`dot ${this.determineDotDisplay(4)}`} onClick={() => this.setState({currentSlide : 4})}></span>
+            <span class={`dot ${this.determineDotDisplay(5)}`} onClick={() => this.setState({currentSlide : 5})}></span>
         </div>
       </div>
     );
@@ -91,8 +104,3 @@ class Slideshow extends Component {
 }
 
 export default Slideshow;
-
-
-// var slideIndex = 1;
-// showSlides(slideIndex);
-

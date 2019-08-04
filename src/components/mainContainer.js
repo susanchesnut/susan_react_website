@@ -5,9 +5,6 @@ import Projects from "./projects";
 import Contact from "./contact";
 
 class MainContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
 
   render() {
       return(
