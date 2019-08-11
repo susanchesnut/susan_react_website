@@ -3,8 +3,18 @@ import Navigation from "./navigation";
 import AboutMe from "./aboutMe";
 import Projects from "./projects";
 import Contact from "./contact";
+import {projectsModelConfig} from "./projectsModel";
 
 class MainContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            automaticLightData: projectsModelConfig.automaticLights,
+            agileData: projectsModelConfig.agile,
+            parachuteData: projectsModelConfig.parachute,
+            plantMonitoringData: projectsModelConfig.plantMonitoring
+        };
+    };
 
   render() {
       return(
@@ -20,8 +30,11 @@ class MainContainer extends Component {
             <section className="aboutMe">
                 <AboutMe/>
             </section>
-            <section className="projects">
-                <Projects/>
+            <section className="projects" id="projects">
+                <Projects projectModel={this.state.automaticLightData}/>
+                <Projects projectModel={this.state.agileData} swapOrientation={true}/>
+                <Projects projectModel={this.state.parachuteData}/>
+                <Projects projectModel={this.state.plantMonitoringData} swapOrientation={true}/>
             </section>
             <section className="contact">
                 <Contact/>
