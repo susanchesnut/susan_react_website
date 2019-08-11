@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Slideshow from "./slideshow";
+import ReactHtmlParser from "react-html-parser";
 
 class Projects extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Projects extends Component {
                         <div class="col-xl-4 col-lg-7 description">
                                 <div class="featured-text text-center text-lg-left">
                                     <h4>{projectModel ? projectModel.header : "header"}</h4>
-                                    <p class="text-black-50 mb-0">{projectModel ? projectModel.description : "description"}</p>
+                                    <p class="text-black-50 mb-0">{ReactHtmlParser(projectModel ? projectModel.description : "description")}</p>
                                 </div>
                         </div>
                         <div class="col-xl-8 col-lg-7">
@@ -38,7 +39,7 @@ class Projects extends Component {
                         <div class="col-xl-4 col-lg-7 description">
                             <div class="featured-text text-center text-lg-left">
                                 <h4>{projectModel ? projectModel.header : "header"}</h4>
-                                <p class="text-black-50 mb-0">{projectModel ? projectModel.description : "description"}</p>
+                                <p class="text-black-50 mb-0">{ReactHtmlParser(projectModel ? projectModel.description : "description")}</p>
                             </div>
                         </div>
                     </div>
