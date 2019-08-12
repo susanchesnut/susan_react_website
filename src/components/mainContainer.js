@@ -39,7 +39,7 @@ class MainContainer extends Component {
             <section className="contact">
                 <Contact/>
             </section>
-            <footer class="bg-black small text-center text-white-50">
+            <footer class="bg-black small text-center text-white">
                 <div class="container">
                 Copyright &copy; Susan Chesnut 2019
                 </div>

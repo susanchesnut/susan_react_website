@@ -77,7 +77,7 @@ class Slideshow extends Component {
     for (var i=0; i < imageInfo.length; i++) {
       items.push(
         <div class={`mySlides ${this.props.name}`} style={this.determineSlideDisplay(i)}>
-          <img src={require("../images/" + this.props.name + `/image${i}.jpg`)} width="500px" alt=""/>
+          <img class="img" src={require("../images/" + this.props.name + `/image${i}.jpg`)} alt=""/>
           <div class="text">{imageInfo[i].blurb}</div>
         </div>
       )
