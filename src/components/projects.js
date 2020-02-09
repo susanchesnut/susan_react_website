@@ -3,9 +3,6 @@ import Slideshow from "./slideshow";
 import ReactHtmlParser from "react-html-parser";
 
 class Projects extends Component {
-    constructor(props) {
-        super(props);
-      };
 
   render() {
       const {projectModel, swapOrientation} = this.props;
