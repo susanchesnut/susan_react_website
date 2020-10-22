@@ -25,8 +25,7 @@ class Contact extends Component {
                   <div class="fas fa-map-marked-alt text-primary mb-2" />
                   <div class="text-uppercase m-0">Address</div>
                   <div class="my-4" />
-                  <div class="small text-black-50">Houston, TX</div>
-                  <div class="small text-black-50">Willing to Relocate</div>
+                  <div class="small text-black-50">Nashville, TN</div>
                 </div>
               </div>
             </div>
@@ -49,7 +48,10 @@ class Contact extends Component {
                   <div class="text-uppercase m-0">Links</div>
                   <div class="my-4" />
                   <div class="small text-black-50">
-                      <a href={require("../susanChesnutResume.pdf")} type="application/pdf" download>Download Resume</a>
+                      <a href={require("../susanChesnutResume.pdf")} type="application/pdf" download>Download SE Resume</a>
+                  </div>
+                  <div class="small text-black-50">
+                      <a href={require("../susanChesnutResume_surveying.pdf")} type="application/pdf" download>Download Surveying Resume</a>
                   </div>
                   <div class="small text-black-50">
                     <a href="https://www.linkedin.com/in/susanchesnut/">

@@ -11,8 +11,7 @@ class MainContainer extends Component {
         this.state = {
             automaticLightData: projectsModelConfig.automaticLights,
             agileData: projectsModelConfig.agile,
-            parachuteData: projectsModelConfig.parachute,
-            plantMonitoringData: projectsModelConfig.plantMonitoring
+            parachuteData: projectsModelConfig.parachute
         };
     };
 
@@ -23,7 +22,7 @@ class MainContainer extends Component {
             <header class="masthead" id="masthead">
                 <div class="container d-flex h-100 align-items-center">
                     <div class="mx-auto text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">DEVELOPER.</h1>
+                        <h1 class="mx-auto my-0 ">susan</h1>
                     </div>
                 </div>
             </header>
@@ -34,14 +33,13 @@ class MainContainer extends Component {
                 <Projects projectModel={this.state.automaticLightData}/>
                 <Projects projectModel={this.state.agileData} swapOrientation={true}/>
                 <Projects projectModel={this.state.parachuteData}/>
-                <Projects projectModel={this.state.plantMonitoringData} swapOrientation={true}/>
             </section>
             <section className="contact">
                 <Contact/>
             </section>
             <footer class="bg-black small text-center text-white">
                 <div class="container">
-                Copyright &copy; Susan Chesnut 2019
+                Copyright &copy; Susan Chesnut 2020
                 </div>
             </footer>
         </div>
